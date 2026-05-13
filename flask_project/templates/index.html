@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Healthcare discharge access system</p>
+        <h1>Bridge the gap between hospital discharge and continuing care.</h1>
+        <p class="hero-text">
+            CareBridge helps physicians and nurses securely view patient discharge summaries,
+            medications, diagnoses, and follow-up instructions.
+        </p>
+        <div class="hero-actions">
+            <a class="btn" href="{{ url_for('login') }}">Log In</a>
+            <a class="btn secondary" href="{{ url_for('register') }}">Create Account</a>
+        </div>
+    </div>
+    <div class="hero-card">
+        <h3>Project Features</h3>
+        <ul>
+            <li>User registration and login</li>
+            <li>Patient discharge summary database</li>
+            <li>Search by name, MRN, or diagnosis</li>
+            <li>Create, read, update, and delete records</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card wide">
+    <h2>{{ "Edit Discharge Summary" if patient else "Add Discharge Summary" }}</h2>
+
+    <form method="POST">
+        <div class="two-col">
+            <div>
+                <label>Medical Record Number</label>
+                <input type="text" name="mrn" required value="{{ patient.mrn if patient else '' }}">
+            </div>
+            <div>
+                <label>Patient Full Name</label>
+                <input type="text" name="full_name" required value="{{ patient.full_name if patient else '' }}">
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <label>Date of Birth</label>
+                <input type="date" name="dob" required value="{{ patient.dob if patient else '' }}">
+            </div>
+            <div>
+                <label>Discharge Date</label>
+                <input type="date" name="discharge_date" required value="{{ patient.discharge_date if patient else '' }}">
+            </div>
+        </div>
+
+        <label>Diagnosis</label>
+        <input type="text" name="diagnosis" required value="{{ patient.diagnosis if patient else '' }}">
+
+        <label>Discharge Summary</label>
+
+        <textarea id="summary"
+          name="summary"
+          required>{{ patient.summary if patient else '' }}</textarea>
+
+        <p id="counter">0 characters</p>
+
+        <label>Medications</label>
+
+        <textarea id="medications"
+          name="medications"
+          required>{{ patient.medications if patient else '' }}</textarea>
+
+        <button type="button"
+        onclick="formatMedications()"
+        class="btn secondary"
+        style="margin-top:10px;">
+    Format Medications
+</button>
+
+        <label>Follow-up Instructions</label>
+        <textarea name="follow_up" required>{{ patient.follow_up if patient else '' }}</textarea>
+
+        <button class="btn full" type="submit">Save Summary</button>
+    </form>
+</div>
+{% endblock %}

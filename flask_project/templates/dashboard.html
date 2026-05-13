@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>Discharge Summaries</h1>
+        <p>Welcome, {{ session.get("full_name") }} — {{ session.get("role") }}</p>
+    </div>
+    <a class="btn" href="{{ url_for('add_patient') }}">Add Summary</a>
+</div>
+
+<form class="search-bar" method="GET">
+    <input id="searchInput"
+           type="text"
+           name="search"
+           value="{{ search }}"
+           placeholder="Search by patient name, MRN, or diagnosis">
+
+    <button class="btn" type="submit">Search</button>
+</form>
+
+<div class="grid">
+    {% for patient in patients %}
+    <article class="patient-card">
+        <div class="card-top">
+            <h3>{{ patient.full_name }}</h3>
+            <span>{{ patient.mrn }}</span>
+        </div>
+        <p><strong>Diagnosis:</strong> {{ patient.diagnosis }}</p>
+        <p><strong>Discharged:</strong> {{ patient.discharge_date }}</p>
+        <a class="link" href="{{ url_for('patient_detail', patient_id=patient.id) }}">View Summary</a>
+    </article>
+    {% else %}
+    <p>No matching records found.</p>
+    {% endfor %}
+</div>
+{% endblock %}

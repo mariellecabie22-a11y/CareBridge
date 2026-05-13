@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card">
+    <h2>Login</h2>
+    <form method="POST">
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="demo@carebridge.local">
+
+        <label>Password</label>
+        <input type="password" name="password" required placeholder="password123">
+
+        <button class="btn full" type="submit">Login</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="summary">
+    <div class="page-header">
+        <div>
+            <h1>{{ patient.full_name }}</h1>
+            <p>MRN: {{ patient.mrn }} | DOB: {{ patient.dob }}</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+    <button onclick="printSummary()" class="btn secondary">
+        Print Summary
+    </button>
+
+    <a class="btn secondary"
+       href="{{ url_for('edit_patient', patient_id=patient.id) }}">
+       Edit
+    </a>
+</div>
+
+    <section class="summary-section">
+        <h3>Diagnosis</h3>
+        <p>{{ patient.diagnosis }}</p>
+    </section>
+
+    <section class="summary-section">
+        <h3>Discharge Date</h3>
+        <p>{{ patient.discharge_date }}</p>
+    </section>
+
+    <section class="summary-section">
+        <h3>Clinical Summary</h3>
+        <p>{{ patient.summary }}</p>
+    </section>
+
+    <section class="summary-section">
+        <h3>Medications</h3>
+        <pre>{{ patient.medications }}</pre>
+    </section>
+
+    <section class="summary-section">
+        <h3>Follow-up Instructions</h3>
+        <pre>{{ patient.follow_up }}</pre>
+    </section>
+
+    <form method="POST" action="{{ url_for('delete_patient', patient_id=patient.id) }}" onsubmit="return confirmDelete()">
+        <button class="danger-btn" type="submit">Delete Record</button>
+    </form>
+</div>
+{% endblock %}
