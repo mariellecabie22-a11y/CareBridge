@@ -294,6 +294,17 @@ pre {
     font-weight: normal;
 }
 
+.confidential-warning {
+    margin-top: 40px;
+    padding-top: 15px;
+    border-top: 1px solid #d1d5db;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #b91c1c;
+    letter-spacing: 0.5px;
+}
+
 @media (max-width: 760px) {
     .navbar {
         position: relative;
