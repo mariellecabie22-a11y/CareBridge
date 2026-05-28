@@ -14,9 +14,11 @@
 <nav class="navbar">
     <div class="logo">CareBridge</div>
 
-    <button class="hamburger" onclick="toggleMenu()">
-        ☰
-    </button>
+    {% if request.endpoint != 'index' %}
+<button class="hamburger" onclick="toggleMenu()">
+    ☰
+</button>
+{% endif %}
 
     <div class="nav-links" id="navLinks">
         {% if session.get("user_id") %}
