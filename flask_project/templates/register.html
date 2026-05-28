@@ -34,16 +34,30 @@
                placeholder="Enter your email">
 
         <label>Password</label>
+
 <input type="password"
        name="password"
        id="password"
        required
-       placeholder="password123">
+       placeholder="Enter your password">
 
 <div class="checkbox-row">
-    <input type="checkbox" id="showPassword" onclick="togglePassword()">
-    <label for="showPassword">Show Password</label>
+    <input type="checkbox"
+           id="showPassword"
+           onclick="togglePassword()">
+
+    <label for="showPassword">
+        Show Password
+    </label>
 </div>
+
+<label>Confirm Password</label>
+
+<input type="password"
+       name="confirm_password"
+       id="confirm_password"
+       required
+       placeholder="Confirm your password">
 
         <button class="btn full" type="submit">
             Create Account

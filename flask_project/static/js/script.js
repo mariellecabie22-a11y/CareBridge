@@ -58,13 +58,23 @@ function toggleMenu() {
     }
 }
 
-// show password option
+// Show password and confirm password
 function togglePassword() {
     const passwordInput = document.querySelector("#password");
+    const confirmPasswordInput = document.querySelector("#confirm_password");
 
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
+
+        if (confirmPasswordInput) {
+            confirmPasswordInput.type = "text";
+        }
+
     } else {
         passwordInput.type = "password";
+
+        if (confirmPasswordInput) {
+            confirmPasswordInput.type = "password";
+        }
     }
 }

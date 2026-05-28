@@ -64,9 +64,14 @@ def register():
         role = request.form["role"]
         email = request.form["email"].strip().lower()
         password = request.form["password"]
+        confirm_password = request.form["confirm_password"]
 
         if User.query.filter_by(email=email).first():
             flash("That email is already registered.", "danger")
+            return redirect(url_for("register"))
+        
+        if password != confirm_password:
+            flash("Passwords do not match.", "danger")
             return redirect(url_for("register"))
 
         user = User(
