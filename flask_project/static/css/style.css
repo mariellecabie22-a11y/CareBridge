@@ -350,3 +350,20 @@ pre {
     width: 92%;
     }
 }
+
+@media print {
+    .navbar,
+    .btn,
+    .danger-btn {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    .summary {
+        box-shadow: none;
+        background: white;
+    }
+}

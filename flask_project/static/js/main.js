@@ -29,7 +29,11 @@ if (textarea && counter) {
 
 // Print summary
 function printSummary() {
-    window.print();
+    if (window.innerWidth <= 760) {
+        alert("On mobile, use your browser menu and choose Share or Print.");
+    } else {
+        window.print();
+    }
 }
 
 // Format medications
