@@ -327,7 +327,38 @@ select {
 }
 
 @media (max-width: 760px) {
+    .navbar {
+        position: relative;
+    }
 
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 8%;
+        background: #0f766e;
+        padding: 18px;
+        border-radius: 12px;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin-left: 0;
+        color: white;
+    }
+}
+
+@media (max-width: 760px) {
     .hero,
     .two-col {
         grid-template-columns: 1fr;
@@ -342,28 +373,13 @@ select {
         flex-direction: column;
         align-items: stretch;
     }
-
-    .page-header div:last-child {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        width: 100%;
-    }
-
-    .page-header .btn,
-    .page-header .danger-btn {
-        width: 100%;
-        text-align: center;
-    }
-
     .form-card,
     .summary,
     .patient-card {
         padding: 20px;
     }
-
     .container {
-        width: 92%;
+    width: 92%;
     }
 }
 
@@ -381,5 +397,60 @@ select {
     .summary {
         box-shadow: none;
         background: white;
+    }
+}
+
+.page-header div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+@media (max-width: 760px) {
+    .page-header div:last-child {
+        width: 100%;
+    }
+
+    .page-header .btn,
+    .page-header .danger-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+@media (max-width: 760px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p,
+    input,
+    select,
+    textarea,
+    button {
+        font-size: 1rem;
+    }
+}
+
+.btn,
+.btn-small,
+.danger-btn,
+input,
+select,
+textarea {
+    transition: all 0.2s ease;
+}
+
+@media (max-width: 480px) {
+    .form-card {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .summary {
+        padding: 18px;
     }
 }
