@@ -17,11 +17,6 @@ if (searchInput) {
     });
 }
 
-// Dark mode
-function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
-}
-
 // Character counter
 const textarea = document.querySelector("#summary");
 const counter = document.querySelector("#counter");

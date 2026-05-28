@@ -213,31 +213,6 @@ pre {
     cursor: pointer;
 }
 
-.dark-mode {
-    background: #111827;
-    color: white;
-}
-
-.dark-mode .navbar {
-    background: #0f172a;
-}
-
-.dark-mode .hero-card,
-.dark-mode .form-card,
-.dark-mode .patient-card,
-.dark-mode .summary {
-    background: #1f2937;
-    color: white;
-}
-
-.dark-mode input,
-.dark-mode textarea,
-.dark-mode select {
-    background: #374151;
-    color: white;
-    border: 1px solid #4b5563;
-}
-
 @media (max-width: 760px) {
     .hero,
     .two-col {

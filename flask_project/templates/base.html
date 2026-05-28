@@ -9,10 +9,6 @@
 <body>
 <div class="nav-links">
 
-    <button onclick="toggleDarkMode()" class="btn-small">
-        Dark Mode
-    </button>
-
     {% if session.get("user_id") %}
         <a href="{{ url_for('dashboard') }}">Dashboard</a>
         <a href="{{ url_for('add_patient') }}">Add Summary</a>
