@@ -44,3 +44,12 @@ function formatMedications() {
         meds.value = lines.map(line => "• " + line.replace(/^•\s*/, "")).join("\n");
     }
 }
+
+// Hamburger button
+function toggleMenu() {
+    const navLinks = document.querySelector("#navLinks");
+
+    if (navLinks) {
+        navLinks.classList.toggle("show");
+    }
+}

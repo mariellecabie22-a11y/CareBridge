@@ -14,7 +14,11 @@
 <nav class="navbar">
     <div class="logo">CareBridge</div>
 
-    <div class="nav-links">
+    <button class="hamburger" onclick="toggleMenu()">
+        ☰
+    </button>
+
+    <div class="nav-links" id="navLinks">
         {% if session.get("user_id") %}
             <a href="{{ url_for('dashboard') }}">Dashboard</a>
             <a href="{{ url_for('add_patient') }}">Add Summary</a>

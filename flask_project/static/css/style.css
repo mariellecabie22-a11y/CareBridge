@@ -269,6 +269,47 @@ pre {
     line-height: 1.7;
 }
 
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+@media (max-width: 760px) {
+    .navbar {
+        position: relative;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 8%;
+        background: #0f766e;
+        padding: 18px;
+        border-radius: 12px;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin-left: 0;
+        color: white;
+    }
+}
+
 @media (max-width: 760px) {
     .hero,
     .two-col {
