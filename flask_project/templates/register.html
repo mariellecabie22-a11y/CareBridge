@@ -35,29 +35,29 @@
 
         <label>Password</label>
 
-<input type="password"
-       name="password"
-       id="password"
-       required
-       placeholder="Enter your password">
+        <input type="password"
+               name="password"
+               id="password"
+               required
+               placeholder="Enter your password">
 
-<div class="checkbox-row">
-    <input type="checkbox"
-           id="showPassword"
-           onclick="togglePassword()">
+        <label>Confirm Password</label>
 
-    <label for="showPassword">
-        Show Password
-    </label>
-</div>
+        <input type="password"
+               name="confirm_password"
+               id="confirm_password"
+               required
+               placeholder="Confirm your password">
 
-<label>Confirm Password</label>
+        <div class="checkbox-row">
+            <input type="checkbox"
+                   id="showPassword"
+                   onclick="togglePassword()">
 
-<input type="password"
-       name="confirm_password"
-       id="confirm_password"
-       required
-       placeholder="Confirm your password">
+            <label for="showPassword">
+                Show Passwords
+            </label>
+        </div>
 
         <button class="btn full" type="submit">
             Create Account
