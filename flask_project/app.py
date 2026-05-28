@@ -168,30 +168,10 @@ def delete_patient(patient_id):
 def init_db():
     db.drop_all()
     db.create_all()
-
-    demo_user = User(
-        full_name="Demo Nurse",
-        role="Nurse",
-        email="demo@carebridge.local",
-        password_hash=generate_password_hash("password123")
-    )
-
-    demo_patient = Patient(
-        mrn="CB1001",
-        full_name="Sample Patient",
-        dob="1985-04-12",
-        diagnosis="Pneumonia",
-        discharge_date="2026-05-13",
-        summary="Patient improved after IV antibiotics and oxygen therapy. Stable for discharge.",
-        medications="Amoxicillin 500mg three times daily for 7 days.\nParacetamol 500mg as needed.",
-        follow_up="Follow up with GP in 1 week. Return to ED for worsening shortness of breath."
-    )
-
-    db.session.add(demo_user)
-    db.session.add(demo_patient)
     db.session.commit()
+
     print("Database initialized.")
-    print("Demo login: demo@carebridge.local / password123")
+    print("Users can now create their own accounts.")
 
 if __name__ == "__main__":
     app.run(debug=True)

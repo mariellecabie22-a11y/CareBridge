@@ -5,8 +5,13 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f3f7fb;
     color: #1f2937;
+    background:
+        url("../images/doctor.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .navbar {
@@ -26,7 +31,8 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: #0f766e;
+    font-weight: bold;
     margin-left: 20px;
     text-decoration: none;
 }
@@ -38,10 +44,26 @@ body {
 
 .hero {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-    align-items: center;
-    min-height: 70vh;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: start;
+    min-height: 100vh;
+    padding-top: 120px;
+}
+
+.hero ul {
+    margin-top: 20px;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.hero-card {
+    margin-top: 40px;
+    max-width: 500px;
+    background: rgba(255,255,255,0.82);
+    padding: 25px;
+    border-radius: 18px;
+    backdrop-filter: blur(8px);
 }
 
 .eyebrow {
@@ -65,7 +87,7 @@ body {
 .form-card,
 .patient-card,
 .summary {
-    background: white;
+    background: rgba(255,255,255,0.88);
     border-radius: 18px;
     padding: 25px;
     box-shadow: 0 10px 30px rgba(15, 118, 110, 0.12);
@@ -211,6 +233,30 @@ pre {
     padding: 12px 18px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.summary {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px;
+}
+
+.patient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.patient-grid div {
+    background: rgba(255,255,255,0.85);
+    padding: 18px;
+    border-radius: 14px;
+}
+
+.patient-grid h3 {
+    margin-top: 0;
+    color: #0f766e;
 }
 
 @media (max-width: 760px) {
