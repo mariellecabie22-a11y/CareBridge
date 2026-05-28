@@ -191,5 +191,8 @@ def init_db():
     print("Database initialized.")
     print("Users can now create their own accounts.")
 
+with app.app_context():
+    db.create_all()
+
 if __name__ == "__main__":
     app.run(debug=True)
