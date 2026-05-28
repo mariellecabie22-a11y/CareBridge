@@ -9,6 +9,10 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
+    "pool_pre_ping": True,
+    "pool_recycle": 300,
+}
 
 db = SQLAlchemy(app)
 
@@ -122,26 +126,34 @@ def dashboard():
 @login_required
 def add_patient():
     if request.method == "POST":
-        patient = Patient(
-            mrn=request.form["mrn"].strip(),
-            full_name=request.form["full_name"].strip(),
-            dob=request.form["dob"],
+        try:
+            patient = Patient(
+                mrn=request.form["mrn"].strip(),
+                full_name=request.form["full_name"].strip(),
+                dob=request.form["dob"],
 
-            hospital_name=request.form["hospital_name"].strip(),
-            ward=request.form["ward"].strip(),
-            discharging_physician=request.form["discharging_physician"].strip(),
-            physician_contact=request.form["physician_contact"].strip(),
+                hospital_name=request.form["hospital_name"].strip(),
+                ward=request.form["ward"].strip(),
+                discharging_physician=request.form["discharging_physician"].strip(),
+                physician_contact=request.form["physician_contact"].strip(),
 
-            diagnosis=request.form["diagnosis"].strip(),
-            discharge_date=request.form["discharge_date"],
-            summary=request.form["summary"].strip(),
-            medications=request.form["medications"].strip(),
-            follow_up=request.form["follow_up"].strip()
-        )
-        db.session.add(patient)
-        db.session.commit()
-        flash("Discharge summary added.", "success")
-        return redirect(url_for("dashboard"))
+                diagnosis=request.form["diagnosis"].strip(),
+                discharge_date=request.form["discharge_date"],
+                summary=request.form["summary"].strip(),
+                medications=request.form["medications"].strip(),
+                follow_up=request.form["follow_up"].strip()
+            )
+
+            db.session.add(patient)
+            db.session.commit()
+
+            flash("Discharge summary added.", "success")
+            return redirect(url_for("dashboard"))
+
+        except Exception as e:
+            db.session.rollback()
+            print(e)
+            flash("Database error occurred. Please try again.", "danger")
 
     return render_template("patient_form.html", patient=None)
 
