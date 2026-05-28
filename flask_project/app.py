@@ -13,6 +13,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 class User(db.Model):
+    __tablename__ = "users"
+
     id = db.Column(db.Integer, primary_key=True)
     full_name = db.Column(db.String(120), nullable=False)
     role = db.Column(db.String(30), nullable=False)
@@ -192,6 +194,7 @@ def init_db():
     print("Users can now create their own accounts.")
 
 with app.app_context():
+    db.drop_all()
     db.create_all()
 
 if __name__ == "__main__":
