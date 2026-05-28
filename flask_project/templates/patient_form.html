@@ -26,6 +26,42 @@
             </div>
         </div>
 
+        <div class="two-col">
+    <div>
+        <label>Hospital Name</label>
+        <input type="text"
+               name="hospital_name"
+               required
+               value="{{ patient.hospital_name if patient else '' }}">
+    </div>
+
+    <div>
+        <label>Ward</label>
+        <input type="text"
+               name="ward"
+               required
+               value="{{ patient.ward if patient else '' }}">
+    </div>
+</div>
+
+<div class="two-col">
+    <div>
+        <label>Discharging Physician</label>
+        <input type="text"
+               name="discharging_physician"
+               required
+               value="{{ patient.discharging_physician if patient else '' }}">
+    </div>
+
+    <div>
+        <label>Physician Contact Number</label>
+        <input type="text"
+               name="physician_contact"
+               required
+               value="{{ patient.physician_contact if patient else '' }}">
+    </div>
+</div>
+
         <label>Diagnosis</label>
         <input type="text" name="diagnosis" required value="{{ patient.diagnosis if patient else '' }}">
 

@@ -6,7 +6,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "change-this-secret-key"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///carebridge.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://neondb_owner:npg_MxmQy9YrKbf5@ep-snowy-glitter-abih4ljh-pooler.eu-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
@@ -23,11 +23,18 @@ class Patient(db.Model):
     mrn = db.Column(db.String(30), unique=True, nullable=False)
     full_name = db.Column(db.String(120), nullable=False)
     dob = db.Column(db.String(20), nullable=False)
+
+    hospital_name = db.Column(db.String(120), nullable=False)
+    ward = db.Column(db.String(80), nullable=False)
+    discharging_physician = db.Column(db.String(120), nullable=False)
+    physician_contact = db.Column(db.String(50), nullable=False)
+
     diagnosis = db.Column(db.String(200), nullable=False)
     discharge_date = db.Column(db.String(20), nullable=False)
     summary = db.Column(db.Text, nullable=False)
     medications = db.Column(db.Text, nullable=False)
     follow_up = db.Column(db.Text, nullable=False)
+
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 def login_required(view):
@@ -116,6 +123,12 @@ def add_patient():
             mrn=request.form["mrn"].strip(),
             full_name=request.form["full_name"].strip(),
             dob=request.form["dob"],
+
+            hospital_name=request.form["hospital_name"].strip(),
+            ward=request.form["ward"].strip(),
+            discharging_physician=request.form["discharging_physician"].strip(),
+            physician_contact=request.form["physician_contact"].strip(),
+
             diagnosis=request.form["diagnosis"].strip(),
             discharge_date=request.form["discharge_date"],
             summary=request.form["summary"].strip(),
@@ -149,6 +162,10 @@ def edit_patient(patient_id):
         patient.summary = request.form["summary"].strip()
         patient.medications = request.form["medications"].strip()
         patient.follow_up = request.form["follow_up"].strip()
+        patient.hospital_name = request.form["hospital_name"].strip()
+        patient.ward = request.form["ward"].strip()
+        patient.discharging_physician = request.form["discharging_physician"].strip()
+        patient.physician_contact = request.form["physician_contact"].strip()
         db.session.commit()
         flash("Discharge summary updated.", "success")
         return redirect(url_for("patient_detail", patient_id=patient.id))

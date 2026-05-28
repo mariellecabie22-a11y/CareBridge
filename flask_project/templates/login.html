@@ -1,15 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
+
 <div class="form-card">
+
     <h2>Login</h2>
+
+    <p class="hero-text">
+        Access patient discharge summaries securely.
+    </p>
+
     <form method="POST">
+
         <label>Email</label>
-        <input type="email" name="email" required placeholder="demo@carebridge.local">
+
+        <input type="email"
+               name="email"
+               required
+               placeholder="Enter your email">
 
         <label>Password</label>
-        <input type="password" name="password" required placeholder="password123">
 
-        <button class="btn full" type="submit">Login</button>
+        <input type="password"
+               name="password"
+               required
+               placeholder="Enter your password">
+
+        <button class="btn full" type="submit">
+            Login
+        </button>
+
     </form>
+
+    <p style="margin-top:20px; text-align:center;">
+        Don't have an account?
+
+        <a class="link" href="{{ url_for('register') }}">
+            Create one here
+        </a>
+    </p>
+
 </div>
+
 {% endblock %}

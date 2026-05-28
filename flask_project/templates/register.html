@@ -1,12 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
+
 <div class="form-card">
+
     <h2>Create Account</h2>
+
+    <p class="hero-text">
+        Register to access and manage discharge summaries securely.
+    </p>
+
     <form method="POST">
+
         <label>Full Name</label>
-        <input type="text" name="full_name" required>
+
+        <input type="text"
+               name="full_name"
+               required
+               placeholder="Enter your full name">
 
         <label>Role</label>
+
         <select name="role" required>
             <option value="Physician">Physician</option>
             <option value="Nurse">Nurse</option>
@@ -14,12 +27,34 @@
         </select>
 
         <label>Email</label>
-        <input type="email" name="email" required>
+
+        <input type="email"
+               name="email"
+               required
+               placeholder="Enter your email">
 
         <label>Password</label>
-        <input type="password" name="password" required minlength="6">
 
-        <button class="btn full" type="submit">Register</button>
+        <input type="password"
+               name="password"
+               required
+               minlength="6"
+               placeholder="Minimum 6 characters">
+
+        <button class="btn full" type="submit">
+            Create Account
+        </button>
+
     </form>
+
+    <p style="margin-top:20px; text-align:center;">
+        Already have an account?
+
+        <a class="link" href="{{ url_for('login') }}">
+            Login here
+        </a>
+    </p>
+
 </div>
+
 {% endblock %}

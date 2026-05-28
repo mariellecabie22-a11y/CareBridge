@@ -31,10 +31,15 @@ body {
 }
 
 .nav-links a {
-    color: #0f766e;
+    color: white;
     font-weight: bold;
     margin-left: 20px;
     text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ccfbf1;
 }
 
 .container {
@@ -257,6 +262,11 @@ pre {
 .patient-grid h3 {
     margin-top: 0;
     color: #0f766e;
+}
+
+.patient-meta {
+    margin: 15px 0;
+    line-height: 1.7;
 }
 
 @media (max-width: 760px) {
