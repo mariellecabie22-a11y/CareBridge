@@ -194,7 +194,6 @@ def init_db():
     print("Users can now create their own accounts.")
 
 with app.app_context():
-    db.drop_all()
     db.create_all()
 
 if __name__ == "__main__":
