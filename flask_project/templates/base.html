@@ -14,7 +14,7 @@
 <nav class="navbar">
     <div class="logo">CareBridge</div>
 
-    {% if request.endpoint != 'index' %}
+    {% if request.endpoint not in ['index', 'login', 'register'] %}
 <button class="hamburger" onclick="toggleMenu()">
     ☰
 </button>
