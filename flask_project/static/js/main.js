@@ -53,3 +53,14 @@ function toggleMenu() {
         navLinks.classList.toggle("show");
     }
 }
+
+// show password option
+function togglePassword() {
+    const passwordInput = document.querySelector("#password");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
