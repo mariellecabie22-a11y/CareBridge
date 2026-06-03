@@ -243,12 +243,17 @@ def account_settings():
 
         current_password = request.form["current_password"]
         new_password = request.form["new_password"]
+        confirm_new_password = request.form["confirm_new_password"]
 
         if new_password:
+            if new_password != confirm_new_password:
+                flash("New passwords do not match.", "danger")
+                return redirect(url_for("account_settings"))
+            
             if not check_password_hash(user.password_hash, current_password):
                 flash("Current password is incorrect.", "danger")
                 return redirect(url_for("account_settings"))
-
+                
             user.password_hash = generate_password_hash(new_password)
 
         db.session.commit()

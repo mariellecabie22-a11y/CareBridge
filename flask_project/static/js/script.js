@@ -61,20 +61,20 @@ function toggleMenu() {
 // Show password and confirm password
 function togglePassword() {
     const passwordInput = document.querySelector("#password");
+    const newPasswordInput = document.querySelector("#new_password");
     const confirmPasswordInput = document.querySelector("#confirm_password");
 
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
+    const fields = [
+        passwordInput,
+        newPasswordInput,
+        confirmPasswordInput
+    ];
 
-        if (confirmPasswordInput) {
-            confirmPasswordInput.type = "text";
+    fields.forEach(field => {
+        if (field) {
+            field.type = field.type === "password"
+                ? "text"
+                : "password";
         }
-
-    } else {
-        passwordInput.type = "password";
-
-        if (confirmPasswordInput) {
-            confirmPasswordInput.type = "password";
-        }
-    }
+    });
 }
