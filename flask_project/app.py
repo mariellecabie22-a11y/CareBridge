@@ -44,6 +44,32 @@ class Patient(db.Model):
 
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+class AccountSettings(db.Model):
+    __tablename__ = "account_settings"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey("users.id"),
+        nullable=False,
+        unique=True
+    )
+
+    receive_notifications = db.Column(db.Boolean, default=True)
+    theme_preference = db.Column(db.String(30), default="Light")
+
+    updated_at = db.Column(
+        db.DateTime,
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow
+    )
+
+    user = db.relationship(
+        "User",
+        backref=db.backref("settings", uselist=False)
+    )
+
 def login_required(view):
     @wraps(view)
     def wrapped_view(*args, **kwargs):
@@ -82,9 +108,14 @@ def register():
         )
         db.session.add(user)
         db.session.commit()
+        
+        settings = AccountSettings(user_id=user.id)
+        db.session.add(settings)
+        db.session.commit()
+        
         flash("Account created. Please log in.", "success")
         return redirect(url_for("login"))
-
+    
     return render_template("register.html")
 
 @app.route("/login", methods=["GET", "POST"])
@@ -200,6 +231,33 @@ def delete_patient(patient_id):
     db.session.commit()
     flash("Record deleted.", "info")
     return redirect(url_for("dashboard"))
+
+@app.route("/account-settings", methods=["GET", "POST"])
+@login_required
+def account_settings():
+    user = User.query.get_or_404(session["user_id"])
+
+    if request.method == "POST":
+        user.full_name = request.form["full_name"].strip()
+        user.email = request.form["email"].strip().lower()
+
+        current_password = request.form["current_password"]
+        new_password = request.form["new_password"]
+
+        if new_password:
+            if not check_password_hash(user.password_hash, current_password):
+                flash("Current password is incorrect.", "danger")
+                return redirect(url_for("account_settings"))
+
+            user.password_hash = generate_password_hash(new_password)
+
+        db.session.commit()
+
+        session["full_name"] = user.full_name
+        flash("Account settings updated.", "success")
+        return redirect(url_for("account_settings"))
+
+    return render_template("account_settings.html", user=user)
 
 @app.cli.command("init-db")
 def init_db():
