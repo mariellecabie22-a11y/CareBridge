@@ -286,9 +286,10 @@ pre {
     border-radius: 14px;
 }
 
-.patient-details h3 {
+.patient-details h2 {
     margin-top: 0;
     color: #0f766e;
+    font-size: 1.2rem;
 }
 
 .patient-meta {
