@@ -239,7 +239,16 @@ def account_settings():
 
     if request.method == "POST":
         user.full_name = request.form["full_name"].strip()
+        user.role = request.form["role"]
         user.email = request.form["email"].strip().lower()
+        new_email = request.form["email"].strip().lower()
+        existing_user = User.query.filter_by(email=new_email).first()
+        
+        if existing_user and existing_user.id != user.id:
+            flash("That email is already in use.", "danger")
+            return redirect(url_for("account_settings"))
+        
+        user.email = new_email
 
         current_password = request.form["current_password"]
         new_password = request.form["new_password"]
@@ -259,6 +268,7 @@ def account_settings():
         db.session.commit()
 
         session["full_name"] = user.full_name
+        session["role"] = user.role
         flash("Account settings updated.", "success")
         return redirect(url_for("account_settings"))
 

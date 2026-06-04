@@ -11,6 +11,22 @@
         <label>Email</label>
         <input type="email" name="email" required value="{{ user.email }}">
 
+        <label>Role</label>
+
+        <select name="role" required>
+        <option value="Physician" {% if user.role == "Physician" %}selected{% endif %}>
+        Physician
+        </option>
+
+        <option value="Nurse" {% if user.role == "Nurse" %}selected{% endif %}>
+        Nurse
+        </option>
+
+        <option value="Student" {% if user.role == "Student" %}selected{% endif %}>
+        Student
+        </option>
+        </select>
+
         <hr>
 
         <label>Current Password</label>
