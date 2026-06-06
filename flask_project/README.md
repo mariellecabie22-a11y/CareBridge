@@ -1,16 +1,16 @@
-Render: https://carebridge-rxma.onrender.com/
+# CareBridge
 
-Neon: https://console.neon.tech/app/projects/quiet-lake-61952324
+## Project Links
+
+Render/Live application: https://carebridge-rxma.onrender.com/
 
 Github: https://github.com/mariellecabie22-a11y/CareBridge
-
-# CareBridge
 
 ## Overview
 
 CareBridge is a Flask-based web application designed to improve the continuity of patient care by providing healthcare professionals with a centralised platform for creating, managing, and accessing patient discharge summaries.
 
-Working in healthcare for over 10 years, I have frequently encountered challenges when caring for patients who have received treatment at multiple hospitals or healthcare facilities. Many patients are unable to recall or fully understand their medical history, diagnoses, medications, or follow-up plans. This often makes it difficult for healthcare professionals to obtain accurate information and provide seamless continuity of care.
+With over 10 years of experience in healthcare, I have frequently encountered challenges when caring for patients who have received treatment at multiple hospitals or healthcare facilities. Many patients are unable to recall or fully understand their medical history, diagnoses, medications, or follow-up plans. This often makes it difficult for healthcare professionals to obtain accurate information and provide seamless continuity of care.
 
 To address this issue, I developed CareBridge as a secure and user-friendly platform that allows healthcare workers to document and review patient discharge information in a structured format. By improving access to important clinical information, CareBridge aims to support safer, more informed, and more efficient patient care.
 
@@ -19,6 +19,7 @@ To address this issue, I developed CareBridge as a secure and user-friendly plat
 * Secure user registration and authentication
 * Password hashing and account management
 * Create, view, edit, and delete discharge summaries
+* User account settings and profile management
 * Patient search functionality
 * Mobile-responsive design
 * Print-friendly discharge summaries
@@ -62,11 +63,14 @@ Stores patient discharge summary information:
 
 ### Account Settings
 
-Stores user-specific preferences and settings:
+Stores user account configuration data and supports future application enhancements.
 
-* Notification preferences
-* Theme preferences
-* Last updated timestamp
+Current functionality includes:
+
+* User profile management
+* Password update functionality
+* Role management
+* Email address updates
 
 ## Future Improvements
 
@@ -80,3 +84,32 @@ Stores user-specific preferences and settings:
 
 Developed by Marielle Cabie as part of a Flask and PostgreSQL web application project, inspired by real-world challenges encountered in healthcare practice.
 
+## Deployment Instructions
+
+This project is deployed using Render and Neon PostgreSQL.
+
+### Required Environment Variables
+
+The following environment variables must be added in Render:
+
+DATABASE_URL=your_neon_postgresql_connection_string
+SECRET_KEY=your_secret_key
+
+### Render Setup 
+
+1. Create a GitHub repository and upload the CareBridge project files.
+2. Create a PostgreSQL database using Neon.
+3. Copy the Neon database connection string.
+4. In Render, create a new Web Service.
+5. Connect the GitHub repository to Render.
+6. Set the build command: pip install -r requirements.txt
+7. Set the start command: gunicorn app:app
+8. Add the required environment variables: 
+           - DATABASE_URL
+           - SECRET_KEY
+9. Deploy the application.
+10. Once deployed, open the Render URL to access the web app.
+
+### Test Account
+
+Users can create their own account through the registration page.
