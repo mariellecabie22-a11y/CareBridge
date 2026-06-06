@@ -76,6 +76,23 @@ Stores user-specific preferences and settings:
 * Advanced reporting and analytics
 * Secure sharing of discharge summaries between healthcare providers
 
+## Deployment Instructions
+
+This project is deployed using Render and Neon PostgreSQL.
+
+### Live Web App
+
+Render URL:  
+https://carebridge-rxma.onrender.com/
+
+### Required Environment Variables
+
+The following environment variables must be added in Render:
+
+```text
+DATABASE_URL=your_neon_postgresql_connection_string
+SECRET_KEY=your_secret_key
+
 ## Author
 
 Developed by Marielle Cabie as part of a Flask and PostgreSQL web application project, inspired by real-world challenges encountered in healthcare practice.
